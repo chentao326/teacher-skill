@@ -299,7 +299,8 @@ teacher-skills/
 │   ├── learner-diagnosis.md              # 学情诊断指南
 │   ├── teaching-strategies.md            # 三级教学策略（强/中/弱）
 │   ├── teaching-techniques.md            # 通俗化讲解技巧 + 类比库 + 表达DNA
-│   └── question-templates.md             # 出题模板库
+│   ├── question-templates.md             # 出题模板库
+│   └── cross-disciplinary-thinking.md   # 跨学科思维教学模块（v2.0 新增）
 │
 ├── adapters/
 │   └── trae-teacher.md                   # TRAE 平台适配文件
