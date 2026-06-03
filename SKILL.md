@@ -7,7 +7,7 @@ description: >
   当用户说"教我"、"帮我学"、"帮我理解"、"模仿XX老师的教学风格"或上传资料要求学习时触发。
   不要在用户只是问一个简单问题时触发——只在涉及系统性学习/教学时激活。
 argument-hint: "[topic or paste materials]"
-version: 1.3.0
+version: 1.4.0
 user-invocable: true
 allowed-tools: Read, Write, Edit, Bash
 triggers:
@@ -330,15 +330,33 @@ triggers:
 
 在教学过程中，根据需要加载以下子模块：
 
+### 通用模块
+
 - `ref/teaching-strategies.md` — 三级教学策略详细定义（强/中/弱）
 - `ref/teaching-techniques.md` — 通俗化讲解技巧和类比库
 - `ref/question-templates.md` — 各类型题目的出题模板
+- `ref/learner-diagnosis.md` — 学情诊断详细指南
 - `prompts/style-extractor.md` — 教学风格六维度提取指南
 - `prompts/style-profile-template.md` — 教学风格档案模板
 - `scripts/generate_quiz.py` — 自动生成练习题
 - `scripts/evaluate_answer.py` — 评估用户答案并给出反馈
 - `scripts/track_progress.py` — 追踪学习进度
 - `scripts/extract_subtitle.py` — 从视频链接/本地文件提取字幕
+
+### 学科专用教学策略
+
+| 学科 | 文件 | 触发词 |
+|------|------|--------|
+| **数学** | `subjects/math-teacher-SKILL.md` | 数学、公式、计算、证明、方程、函数、微积分、概率 |
+| **编程** | `subjects/programming-teacher-SKILL.md` | 编程、代码、Python、JavaScript、开发、算法、数据结构 |
+| **语文** | `subjects/chinese-teacher-SKILL.md` | 语文、文言文、古诗、阅读、写作、作文、文学 |
+| **英语** | `subjects/english-teacher-SKILL.md` | 英语、英文、语法、单词、雅思、托福、四六级 |
+| **物理** | `subjects/physics-teacher-SKILL.md` | 物理、力学、电学、热学、光学、运动、牛顿 |
+| **化学** | `subjects/chemistry-teacher-SKILL.md` | 化学、反应、方程式、配平、酸碱、有机化学 |
+| **历史** | `subjects/history-teacher-SKILL.md` | 历史、朝代、古代史、近代史、时间线、历史人物 |
+| **生物** | `subjects/biology-teacher-SKILL.md` | 生物、细胞、基因、遗传、进化、生态、人体 |
+
+当用户提到的学科与上表匹配时，自动加载对应的学科专用教学策略，在 Phase 1 学情诊断后执行对应策略进行教学。如果用户没有明确学科，使用默认教学策略。
 
 ---
 

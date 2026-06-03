@@ -307,10 +307,29 @@ teacher-skills/
 └── subjects/
     ├── _template-SKILL.md                # 学科子Skill模板（可复用）
     ├── math-teacher-SKILL.md             # 数学教学策略
-    └── programming-teacher-SKILL.md      # 编程教学策略
+    ├── programming-teacher-SKILL.md      # 编程教学策略
+    ├── chinese-teacher-SKILL.md          # 语文教学策略
+    ├── english-teacher-SKILL.md          # 英语教学策略
+    ├── physics-teacher-SKILL.md          # 物理教学策略
+    ├── chemistry-teacher-SKILL.md        # 化学教学策略
+    ├── history-teacher-SKILL.md          # 历史教学策略
+    └── biology-teacher-SKILL.md          # 生物教学策略
 ```
 
 ---
+
+## 已有学科
+
+| 学科 | 文件 | 重点覆盖 |
+|------|------|---------|
+| 数学 | `subjects/math-teacher-SKILL.md` | 公式直觉化、几何可视化、证明思路 |
+| 编程 | `subjects/programming-teacher-SKILL.md` | 代码思维、调试能力、项目实战 |
+| 语文 | `subjects/chinese-teacher-SKILL.md` | 文言文、阅读理解、写作、文学鉴赏 |
+| 英语 | `subjects/english-teacher-SKILL.md` | 语法、词汇、口语、听力、应试 |
+| 物理 | `subjects/physics-teacher-SKILL.md` | 概念理解、公式推导、实验思维 |
+| 化学 | `subjects/chemistry-teacher-SKILL.md` | 反应、方程式、实验操作、计算 |
+| 历史 | `subjects/history-teacher-SKILL.md` | 时间线、因果分析、史料解读 |
+| 生物 | `subjects/biology-teacher-SKILL.md` | 细胞、基因、生理、进化、生态 |
 
 ## 扩展学科
 
@@ -320,7 +339,7 @@ teacher-skills/
 cp subjects/_template-SKILL.md subjects/your-subject-SKILL.md
 ```
 
-编辑 `your-subject-SKILL.md`，填入学科特有的教学策略、常见误解和练习设计。
+编辑 `your-subject-SKILL.md`，填入学科特有的教学策略、常见误解和练习设计。欢迎 PR 贡献新学科！
 
 ---
 
