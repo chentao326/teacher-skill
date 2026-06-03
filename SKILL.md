@@ -355,6 +355,7 @@ triggers:
 | **化学** | `subjects/chemistry-teacher-SKILL.md` | 化学、反应、方程式、配平、酸碱、有机化学 |
 | **历史** | `subjects/history-teacher-SKILL.md` | 历史、朝代、古代史、近代史、时间线、历史人物 |
 | **生物** | `subjects/biology-teacher-SKILL.md` | 生物、细胞、基因、遗传、进化、生态、人体 |
+| **AI / 人工智能** | `subjects/ai-teacher-SKILL.md` | AI、大模型、LLM、ChatGPT、Claude、DeepSeek、Prompt、Agent、智能体、MCP、RAG、AI工具 |
 
 当用户提到的学科与上表匹配时，自动加载对应的学科专用教学策略，在 Phase 1 学情诊断后执行对应策略进行教学。如果用户没有明确学科，使用默认教学策略。
 

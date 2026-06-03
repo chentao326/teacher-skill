@@ -313,7 +313,8 @@ teacher-skills/
     ├── physics-teacher-SKILL.md          # 物理教学策略
     ├── chemistry-teacher-SKILL.md        # 化学教学策略
     ├── history-teacher-SKILL.md          # 历史教学策略
-    └── biology-teacher-SKILL.md          # 生物教学策略
+    ├── biology-teacher-SKILL.md          # 生物教学策略
+    └── ai-teacher-SKILL.md               # AI人工智能教学策略
 ```
 
 ---
@@ -330,6 +331,7 @@ teacher-skills/
 | 化学 | `subjects/chemistry-teacher-SKILL.md` | 反应、方程式、实验操作、计算 |
 | 历史 | `subjects/history-teacher-SKILL.md` | 时间线、因果分析、史料解读 |
 | 生物 | `subjects/biology-teacher-SKILL.md` | 细胞、基因、生理、进化、生态 |
+| AI / 人工智能 | `subjects/ai-teacher-SKILL.md` | 大模型原理、Prompt 工程、Agent、工具链、AI 伦理 |
 
 ## 扩展学科
 
