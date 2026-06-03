@@ -6,6 +6,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![AgentSkills](https://img.shields.io/badge/AgentSkills-Standard-green)](https://agentskills.io)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue)]()
+[![Subjects](https://img.shields.io/badge/subjects-9-orange)]()
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
 [![Multi-Platform](https://img.shields.io/badge/Multi--Platform-5%20Platforms-orange)]()
 
@@ -14,6 +16,10 @@
 把一份文档、一本书、一门课程丢给 AI，它会像一位耐心的老师一样，先了解你的基础，再用你能听懂的方式，一步步教会你。
 
 不假设你"应该知道"什么，不急于给答案，不跳过任何一步。每个知识点讲完都会确认你真的懂了，然后再往下走。
+
+**v2.0 新特性**：新增跨学科思维模块——不再孤立地教单个学科，而是帮你建立知识之间的网状连接，实现举一反三和联想迁移。同时新增 AI 时代专属教学策略，覆盖大模型原理、Prompt 工程、Agent 等前沿主题。
+
+现在支持 **9 个学科** 的专业教学策略：数学、编程、语文、英语、物理、化学、历史、生物、AI/人工智能。
 
 ---
 
@@ -24,10 +30,10 @@
 ```bash
 # 项目级（仅当前项目可用）
 mkdir -p .claude/skills
-git clone https://github.com/yourname/teacher-skills .claude/skills/teacher-skills
+git clone https://github.com/chentao326/teacher-skill .claude/skills/teacher-skills
 
 # 全局（所有项目可用）
-git clone https://github.com/yourname/teacher-skills ~/.claude/skills/teacher-skills
+git clone https://github.com/chentao326/teacher-skill ~/.claude/skills/teacher-skills
 ```
 
 > **重要**：Claude Code 从 git 仓库根目录扫描 `.claude/skills/`，请确保目录结构正确。
@@ -40,10 +46,10 @@ codex --enable skills
 
 # 项目级
 mkdir -p .codex/skills
-git clone https://github.com/yourname/teacher-skills .codex/skills/teacher-skills
+git clone https://github.com/chentao326/teacher-skill .codex/skills/teacher-skills
 
 # 全局
-git clone https://github.com/yourname/teacher-skills ~/.codex/skills/teacher-skills
+git clone https://github.com/chentao326/teacher-skill ~/.codex/skills/teacher-skills
 ```
 
 ### OpenCode
@@ -51,16 +57,16 @@ git clone https://github.com/yourname/teacher-skills ~/.codex/skills/teacher-ski
 ```bash
 # 项目级
 mkdir -p .opencode/skills
-git clone https://github.com/yourname/teacher-skills .opencode/skills/teacher-skills
+git clone https://github.com/chentao326/teacher-skill .opencode/skills/teacher-skills
 
 # 个人级
-git clone https://github.com/yourname/teacher-skills ~/.config/opencode/skills/teacher-skills
+git clone https://github.com/chentao326/teacher-skill ~/.config/opencode/skills/teacher-skills
 ```
 
 ### OpenClaw
 
 ```bash
-git clone https://github.com/yourname/teacher-skills ~/.openclaw/workspace/skills/teacher-skills
+git clone https://github.com/chentao326/teacher-skill ~/.openclaw/workspace/skills/teacher-skills
 # 重启 Gateway 生效
 ```
 
@@ -264,6 +270,20 @@ AI 会自动分析该教师的教学风格（句式、词汇、节奏、互动�
 风格分析覆盖六个维度：句式结构、词汇特征、教学节奏、互动模式、内容组织、情感态度。
 
 > **依赖**：视频字幕提取需要 `yt-dlp`（`pip install yt-dlp`）。如果视频没有字幕，请上传课程字幕文件。
+
+### 跨学科思维（v2.0 新增）
+
+不再孤立地教单个学科——在教学全流程中嵌入网状知识连接，帮助学生建立跨学科联想习惯。
+
+| 能力 | 说明 | 教学时机 |
+|------|------|---------|
+| **知识联网** | 12组核心概念跨6+学科映射（如"反馈"在生物=稳态、在电子=电路、在编程=递归） | 概念讲解时自然穿插 |
+| **举一反三** | 结构化类比三步法：从熟悉领域提取模式 → 应用到新概念 → 验证理解 | 引入新概念时 |
+| **联想激发** | 三句话联想练习 + 跨界五问 + 10张跨界碰撞卡（如"如果把这个概念做成产品..."） | 课后巩固/阶段性回顾 |
+
+跨学科连接不是额外负担——好的跨学科教学让每个概念都"多了一个维度"。当你学数学时看到物理的影子，学物理时闻到化学的味道，知识就活了。
+
+详见 `ref/cross-disciplinary-thinking.md`。
 
 ---
 
