@@ -285,7 +285,8 @@ teacher-skills/
     ├── chemistry-teacher-SKILL.md        # Chemistry teaching strategy
     ├── history-teacher-SKILL.md          # History teaching strategy
     ├── biology-teacher-SKILL.md          # Biology teaching strategy
-    └── ai-teacher-SKILL.md               # AI / Artificial Intelligence teaching strategy
+    ├── ai-teacher-SKILL.md               # AI / Artificial Intelligence
+    └── feynman-teacher-SKILL.md          # Feynman Thinking (reverse-distilled) teaching strategy
 ```
 
 ---
@@ -303,6 +304,7 @@ teacher-skills/
 | History | `subjects/history-teacher-SKILL.md` | Timelines, causal analysis, source interpretation |
 | Biology | `subjects/biology-teacher-SKILL.md` | Cells, genetics, physiology, evolution, ecology |
 | AI / AI时代 | `subjects/ai-teacher-SKILL.md` | LLM fundamentals, Prompt engineering, Agents, AI ethics |
+| Feynman Thinking (reverse-distilled) | `subjects/feynman-teacher-SKILL.md` | Don't fool yourself, naming≠understanding, concrete thinking, deep play |
 
 ## Creating New Subjects
 

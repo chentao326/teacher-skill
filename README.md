@@ -336,7 +336,8 @@ teacher-skills/
     ├── chemistry-teacher-SKILL.md        # 化学教学策略
     ├── history-teacher-SKILL.md          # 历史教学策略
     ├── biology-teacher-SKILL.md          # 生物教学策略
-    └── ai-teacher-SKILL.md               # AI人工智能教学策略
+    ├── ai-teacher-SKILL.md               # AI人工智能教学策略
+    └── feynman-teacher-SKILL.md          # 费曼思维（反蒸馏）
 ```
 
 ---
@@ -354,6 +355,7 @@ teacher-skills/
 | 历史 | `subjects/history-teacher-SKILL.md` | 时间线、因果分析、史料解读 |
 | 生物 | `subjects/biology-teacher-SKILL.md` | 细胞、基因、生理、进化、生态 |
 | AI / 人工智能 | `subjects/ai-teacher-SKILL.md` | 大模型原理、Prompt 工程、Agent、工具链、AI 伦理 |
+| 费曼思维（反蒸馏） | `subjects/feynman-teacher-SKILL.md` | 反自欺、命名≠理解、具象化思考、深度游戏、科学思维 |
 
 ## 扩展学科
 
