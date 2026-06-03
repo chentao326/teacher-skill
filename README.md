@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![AgentSkills](https://img.shields.io/badge/AgentSkills-Standard-green)](https://agentskills.io)
-[![Version](https://img.shields.io/badge/version-2.0.0-blue)]()
+[![Version](https://img.shields.io/badge/version-2.1.0-blue)]()
 [![Subjects](https://img.shields.io/badge/subjects-9-orange)]()
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
 [![Multi-Platform](https://img.shields.io/badge/Multi--Platform-5%20Platforms-orange)]()
@@ -18,7 +18,7 @@
 
 不假设你"应该知道"什么，不急于给答案，不跳过任何一步。每个知识点讲完都会确认你真的懂了，然后再往下走。
 
-**v2.0 新特性**：新增跨学科思维模块——不再孤立地教单个学科，而是帮你建立知识之间的网状连接，实现举一反三和联想迁移。同时新增 AI 时代专属教学策略，覆盖大模型原理、Prompt 工程、Agent 等前沿主题。
+**v2.1 新特性**：教学流程模块化拆分、学习进度持久化管理、客观验证回路。不再担心学到一半中断——下次回来从断点继续。
 
 现在支持 **9 个学科** 的专业教学策略：数学、编程、语文、英语、物理、化学、历史、生物、AI/人工智能。
 
