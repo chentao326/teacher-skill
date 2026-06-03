@@ -10,6 +10,7 @@
 [![Subjects](https://img.shields.io/badge/subjects-9-orange)]()
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
 [![Multi-Platform](https://img.shields.io/badge/Multi--Platform-5%20Platforms-orange)]()
+[![Readme EN](https://img.shields.io/badge/Readme-English-blue)](README_EN.md)
 
 ---
 
