@@ -7,7 +7,7 @@ description: >
   当用户说"教我"、"帮我学"、"帮我理解"、"模仿XX老师的教学风格"或上传资料要求学习时触发。
   不要在用户只是问一个简单问题时触发——只在涉及系统性学习/教学时激活。
 argument-hint: "[topic or paste materials]"
-version: 2.1.0
+version: 2.2.0
 user-invocable: true
 allowed-tools: Read, Write, Edit, Bash
 triggers:
@@ -50,16 +50,67 @@ triggers:
 
 | 用户说了什么 | 你应该做什么 |
 |-------------|-------------|
-| "教我XX" / "帮我学XX" / 上传资料要求学习 | 加载 `ref/teaching-sop.md`，从 **Phase 0** 开始执行完整教学流程 |
-| 已经在上课，当前单元讲完了 | 继续执行当前 Phase 的下一步，参考 `ref/teaching-sop.md` 中的对应步骤 |
+| "教我XX" / "帮我学XX" / "帮我理解XX" / 上传资料要求学习 | 加载 `ref/teaching-sop.md`，从 **Phase 0** 开始执行完整教学流程 |
+| 已经在上课，当前单元讲完了 | 继续执行当前 Phase 的下一步，参考 `ref/teaching-sop.md` |
 | 用户回来继续学习（之前学过） | 加载学习状态记录，根据状态继续 |
-| "把这个 skill 反蒸馏成课程" | 加载 `ref/reverse-distillation-guide.md`，开始反蒸馏流程 |
-| "试试反蒸馏" / "分析这个 skill" / 提供 skill 的 GitHub URL | 同上——进入反蒸馏模式 |
-| "把 [人名] 的思维做成课程" | 先搜索 awesome-persona-skills 仓库确认是否有该 skill，有则反蒸馏 |
-| `/teacher status` / `/teacher reset` 等管理命令 | 参考 `ref/management-commands.md` 执行对应命令 |
+| **"我想学会XXX的思维方式" / "我想知道XXX是怎么想的" / "帮我变成XXX那样思考"** | **自动搜索 skill → 生成课程 → 开始教学**（详见下方引导） |
+| **"我想学XX的思维模式" / "XX的思考方式是什么" / 想向某个名人/角色学习** | 同上——搜索匹配的 skill 并启动教学 |
+| `/teacher status` / `/teacher reset` 等管理命令 | 参考 `ref/management-commands.md` |
 | "这不对" / "补充一下" 等进化命令 | 参考 `ref/teaching-sop.md` 中的进化模式章节 |
 | 新用户，没明确说要学什么 | 问："你想学什么？把文档、书籍或课程资料发给我" |
 | 用户说"用XX的风格教我" | 先执行 Phase 0.5（风格模仿），再继续 Phase 1-5 |
+
+---
+
+# 自动搜索 skill + 启动教学（v2.2 新增）
+
+当用户说"我想学会XXX的思维方式"、"XXX是怎么想的"等语句时，执行以下流程：
+
+### Step 1：识别对象
+
+从用户的话中提取要学习的人物/角色名。常见触发模式：
+- "我想学会巴菲特的思维方式" → 对象: 巴菲特
+- "我想知道马斯克是怎么想的" → 对象: 马斯克
+- "帮我像鲁迅那样思考" → 对象: 鲁迅
+- "我想学费曼的思考方式" → 对象: 费曼
+
+### Step 2：搜索匹配的 Skill
+
+检查是否已经有现成的教学学科（subjects/ 目录下已有文件）：
+- 如果已有 → 直接进入 Phase 1 学情诊断开始教学
+
+如果没有，到开源 skill 仓库搜索：
+
+> **搜索来源**：
+> - https://github.com/tmstack/awesome-persona-skills（65+ skill，名人/商业思维/职场）
+> - https://github.com/momozi1996/awesome-ai-persona-skills（100+ skill，含作家/自媒体大V）
+
+搜索方法：访问对应仓库的 README 或 skill 目录，查找匹配该人物/角色的 skill。
+
+### Step 3：自动生成课程
+
+如果找到匹配的 skill：
+
+1. 用 `scripts/reverse_distill.py --analyze <skill_url>` 分析 skill 内容
+2. 根据分析结果，判断是否适合教学（thinking/思维型最合适，persona/情感型可能不合适）
+3. 用 `--generate` 生成教学骨架文件到 subjects/ 目录
+4. 你（AI）基于骨架补充：生活类比 + 检测练习 + 分级教学重点
+5. 自动注册到本 SKILL.md 的学科引用表中
+
+### Step 4：开始教学
+
+完成课程生成后，自动进入 Phase 1 学情诊断 → Phase 2 → ... 开始教学。
+
+### Step 5：未找到时的处理
+
+如果在所有仓库都搜索不到匹配的 skill：
+
+- "目前我还没有找到关于 [人物] 的思维素材。不过我可以试试用我自己的知识来教你 [相关领域] 的核心思维方式。要不要先试试？"
+- 或者问用户有没有相关的资料/文档可以提供
+
+> **关于"反蒸馏"**：上述流程的内部机制是从 AI Skill 提取可教知识转化为人类课程。
+> 但用户不需要知道这些——用户只需要说"我想学会XXX的思维方式"，
+> 系统会自动完成搜索、生成、教学的全流程。
 
 ---
 
@@ -93,7 +144,7 @@ Phase 5:  学习完成总结
 - `ref/learner-diagnosis.md` — 学情诊断详细指南
 - `ref/cross-disciplinary-thinking.md` — 跨学科思维教学模块（知识联网、举一反三、联想激发）
 - `ref/verification-framework.md` — 教学效果验证框架（检测题类型、评分标准、教学调整规则）
-- `ref/reverse-distillation-guide.md` — 反蒸馏操作指引（v2.1 新增）
+- `ref/skill-to-curriculum-guide.md` — 技能教学操作指引（自动搜索skill+生成课程+教学）
 - `ref/improvement-roadmap.md` — 改进计划与版本路线图
 
 ## 脚本

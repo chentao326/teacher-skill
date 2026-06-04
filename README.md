@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![AgentSkills](https://img.shields.io/badge/AgentSkills-Standard-green)](https://agentskills.io)
-[![Version](https://img.shields.io/badge/version-2.1.0-blue)]()
+[![Version](https://img.shields.io/badge/version-2.2.0-blue)]()
 [![Subjects](https://img.shields.io/badge/subjects-9-orange)]()
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
 [![Multi-Platform](https://img.shields.io/badge/Multi--Platform-5%20Platforms-orange)]()
@@ -18,7 +18,7 @@
 
 不假设你"应该知道"什么，不急于给答案，不跳过任何一步。每个知识点讲完都会确认你真的懂了，然后再往下走。
 
-**v2.1 新特性**：教学流程模块化拆分、学习进度持久化管理、客观验证回路、**反蒸馏能力**（将 AI Skill 转化为人类课程）。不再担心学到一半中断——下次回来从断点继续。支持从 awesome-persona-skills 等仓库反蒸馏思维型 Skill。
+**v2.2 新特性**：说"我想学会XXX的思维方式"自动搜索 skill、生成课程、开始教学——不再需要知道任何技术细节。
 
 现在支持 **9 个学科** 的专业教学策略：数学、编程、语文、英语、物理、化学、历史、生物、AI/人工智能。
 
@@ -326,8 +326,7 @@ teacher-skills/
 │   ├── teaching-sop.md                   # 教学 SOP（v2.1 独立拆分）
 │   ├── management-commands.md            # 管理命令表（v2.1 独立拆分）
 │   ├── verification-framework.md         # 教学效果验证框架（v2.1）
-│   ├── reverse-distillation-guide.md     # 反蒸馏操作指引（v2.1）
-│   ├── reverse-distillation-report.md    # 反蒸馏调研报告
+│   ├── skill-to-curriculum-guide.md      # 技能教学操作指引（v2.2）
 │   ├── cross-disciplinary-thinking.md   # 跨学科思维教学模块（v2.0）
 │   └── improvement-roadmap.md            # 改进计划（v2.1）
 │
