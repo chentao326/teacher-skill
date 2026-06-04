@@ -11,3 +11,9 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Generated artifacts
+.od-skills/
+*.html.artifact.json
+teacher-skill-dashboard.html
+index.html
