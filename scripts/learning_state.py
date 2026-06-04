@@ -26,7 +26,7 @@ def default_state(name="default"):
             "name": name,
             "created_at": now,
             "updated_at": now,
-            "version": "2.1.0"
+            "version": "2.6.0"
         },
         "user": {
             "level": None,
@@ -49,6 +49,11 @@ def default_state(name="default"):
         "verification": {
             "checkpoints": [],
             "final_result": None
+        },
+        "review": {
+            "last_check_at": None,
+            "due_count": 0,
+            "overdue": []
         }
     }
 
@@ -116,6 +121,17 @@ def print_summary(state):
     if verification.get("final_result"):
         passed = verification["final_result"].get("passed", False)
         add("最终验证", "通过" if passed else "待改进")
+
+    review = state.get("review", {})
+    if review.get("due_count", 0) > 0:
+        add("待复习单元", str(review["due_count"]) + " 个")
+        overdue = review.get("overdue", [])
+        if overdue:
+            lines.append("  到期复习:")
+            for item in overdue[:3]:
+                lines.append("    - " + item.get("name", "?") + " (" + str(item.get("days_ago", 0)) + "天前学的)")
+            if len(overdue) > 3:
+                lines.append("    ... 还有 " + str(len(overdue) - 3) + " 个")
 
     print("\n".join(lines))
 

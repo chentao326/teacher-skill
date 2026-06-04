@@ -7,7 +7,7 @@ description: >
   当用户说"教我"、"帮我学"、"帮我理解"、"模仿XX老师的教学风格"或上传资料要求学习时触发。
   不要在用户只是问一个简单问题时触发——只在涉及系统性学习/教学时激活。
 argument-hint: "[topic or paste materials]"
-version: 2.4.0
+version: 2.6.0
 user-invocable: true
 allowed-tools: Read, Write, Edit, Bash
 triggers:
