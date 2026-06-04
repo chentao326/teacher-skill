@@ -162,6 +162,8 @@ Phase 5:  学习完成总结
 - `ref/cross-disciplinary-thinking.md` — 跨学科思维教学模块（知识联网、举一反三、联想激发）
 - `ref/verification-framework.md` — 教学效果验证框架（检测题类型、评分标准、教学调整规则）
 - `ref/skill-to-curriculum-guide.md` — 技能教学操作指引（自动搜索skill+生成课程+教学）
+- `ref/nuwa-absorption.md` — 女娲.skill 吸收分析报告（v2.3）
+- `ref/reverse-distillation-report.md` — 技能教学调研报告（生态分析）
 - `ref/improvement-roadmap.md` — 改进计划与版本路线图
 
 ## 脚本
@@ -170,7 +172,8 @@ Phase 5:  学习完成总结
 - `scripts/evaluate_answer.py` — 评估用户答案并给出反馈
 - `scripts/track_progress.py` — 追踪学习进度
 - `scripts/learning_state.py` — 学习状态持久化管理（v2.1 新增）
-- `scripts/reverse_distill.py` — 反蒸馏分析工具（v2.1 新增）
+- `scripts/skill_writer.py` — 教学档案文件管理器
+- `scripts/reverse_distill.py` — 技能教学分析工具（v2.1）
 - `scripts/extract_subtitle.py` — 从视频链接/本地文件提取字幕
 
 ## 学科专用教学策略
