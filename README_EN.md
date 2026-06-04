@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![AgentSkills](https://img.shields.io/badge/AgentSkills-Standard-green)](https://agentskills.io)
-[![Version](https://img.shields.io/badge/version-2.6.0-blue)]()
+[![Version](https://img.shields.io/badge/version-2.7.0-blue)]()
 [![Subjects](https://img.shields.io/badge/subjects-10-orange)]()
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
 [![Multi-Platform](https://img.shields.io/badge/Multi--Platform-5%20Platforms-orange)]()
@@ -17,7 +17,7 @@ Throw a document, book, or course at an AI — it will teach you like a patient 
 
 It never assumes you "should know" something, never jumps to the answer, and never skips a step. After each concept, it checks that you truly understand before moving on.
 
-**v2.6 core capabilities**: Say "teach me how Buffett thinks" — auto-search skills from open-source repos, extract mental models, generate curriculum, and start teaching. Supports learning progress persistence, deliberate practice loops, and Ebbinghaus spaced repetition.
+**v2.7 core capabilities**: Say "teach me how Buffett thinks" — auto-search skills from open-source repos, extract mental models, generate curriculum, and start teaching. Supports learning progress persistence, deliberate practice loops, Ebbinghaus spaced repetition, progressive learning paths, and teaching error correction.
 
 Now supports **10 subjects**: Math, Programming, Chinese, English, Physics, Chemistry, History, Biology, AI, and Feynman Thinking.
 
@@ -272,7 +272,18 @@ teacher-skills/
 │   ├── teaching-strategies.md            # Three-level teaching strategies
 │   ├── teaching-techniques.md            # Plain language techniques + analogy library
 │   ├── question-templates.md             # Question template library
-│   └── cross-disciplinary-thinking.md   # Cross-disciplinary thinking module (v2.0)
+│   ├── teaching-sop.md                   # Teaching SOP (main workflow Phase 0-5)
+│   ├── management-commands.md            # Management commands
+│   ├── verification-framework.md         # Teaching verification framework
+│   ├── extraction-framework.md           # Unified extraction framework (v2.4)
+│   ├── skill-to-curriculum-guide.md      # Skill-to-curriculum guide
+│   ├── cross-disciplinary-thinking.md   # Cross-disciplinary thinking module (v2.0)
+│   ├── deliberate-practice-research.md   # Deliberate practice research (v2.5)
+│   ├── forgetting-curve-research.md      # Forgetting curve research (v2.6)
+│   ├── nuwa-absorption.md               # Nuwa.skill absorption report
+│   ├── reverse-distillation-report.md   # Reverse distillation research report
+│   ├── unified-extraction-research.md    # Unified extraction research
+│   └── improvement-roadmap.md            # Improvement roadmap
 │
 ├── adapters/
 │   └── trae-teacher.md                   # TRAE platform adapter

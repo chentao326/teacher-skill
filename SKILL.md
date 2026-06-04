@@ -194,6 +194,9 @@ Phase 5:  学习完成总结
 - `ref/nuwa-absorption.md` — 女娲.skill 吸收分析报告（v2.3）
 - `ref/reverse-distillation-report.md` — 技能教学调研报告（生态分析）
 - `ref/improvement-roadmap.md` — 改进计划与版本路线图
+- `ref/deliberate-practice-research.md` — 刻意练习调研报告（v2.5 设计依据）
+- `ref/forgetting-curve-research.md` — 艾宾浩斯遗忘曲线调研（v2.6 间隔复习设计依据）
+- `ref/unified-extraction-research.md` — 统一提取管道调研（v2.4 设计依据）
 
 ## 脚本
 

@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![AgentSkills](https://img.shields.io/badge/AgentSkills-Standard-green)](https://agentskills.io)
-[![Version](https://img.shields.io/badge/version-2.6.0-blue)]()
+[![Version](https://img.shields.io/badge/version-2.7.0-blue)]()
 [![Subjects](https://img.shields.io/badge/subjects-10-orange)]()
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
 [![Multi-Platform](https://img.shields.io/badge/Multi--Platform-5%20Platforms-orange)]()
@@ -18,7 +18,7 @@
 
 不假设你"应该知道"什么，不急于给答案，不跳过任何一步。每个知识点讲完都会确认你真的懂了，然后再往下走。
 
-**v2.6 核心能力**：说"我想学会XXX的思维方式"自动从开源 skill 仓库/网络搜索获取资料，统一提取思维模型，生成课程并开始教学。支持学习进度持久化、刻意练习循环、艾宾浩斯间隔复习。
+**v2.7 核心能力**：说"我想学会XXX的思维方式"自动从开源 skill 仓库/网络搜索获取资料，统一提取思维模型，生成课程并开始教学。支持学习进度持久化、刻意练习循环、艾宾浩斯间隔复习、渐进式学习路径、教学错误纠正。
 
 现在支持 **10 个学科** 的专业教学策略：数学、编程、语文、英语、物理、化学、历史、生物、AI、费曼思维。说"我想学会巴菲特的思维方式"会自动搜索匹配 skill 并生成课程。
 
