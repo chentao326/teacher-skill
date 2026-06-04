@@ -7,7 +7,7 @@ description: >
   当用户说"教我"、"帮我学"、"帮我理解"、"模仿XX老师的教学风格"或上传资料要求学习时触发。
   不要在用户只是问一个简单问题时触发——只在涉及系统性学习/教学时激活。
 argument-hint: "[topic or paste materials]"
-version: 2.2.0
+version: 2.3.0
 user-invocable: true
 allowed-tools: Read, Write, Edit, Bash
 triggers:
@@ -58,6 +58,8 @@ triggers:
 | **模糊需求：** "我想提升决策能力" / "学会更好的写作" / "帮我变得更有逻辑" 等 | 加载 `ref/teaching-sop.md`，从 **Phase 0A** 开始——先诊断需求，再推荐方向 |
 | `/teacher status` / `/teacher reset` 等管理命令 | 参考 `ref/management-commands.md` |
 | "这不对" / "补充一下" 等进化命令 | 参考 `ref/teaching-sop.md` 中的进化模式章节 |
+| "更新一下[人名]的课程" / "[人名]最近有新信息" | 参考 `ref/skill-to-curriculum-guide.md` 中的"增量更新模式" |
+| 用户提供了某个已有人物的新素材（文章/视频/文档） | 同上——增量更新模式 |
 | 新用户，没明确说要学什么 | 问："你想学什么？把文档、书籍或课程资料发给我" |
 | 用户说"用XX的风格教我" | 先执行 Phase 0.5（风格模仿），再继续 Phase 1-5 |
 
