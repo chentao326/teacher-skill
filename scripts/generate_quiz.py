@@ -17,7 +17,6 @@ generate_quiz.py - 根据教学内容和用户等级生成练习题
 
 import argparse
 import json
-import sys
 
 
 # 题目模板库
@@ -162,6 +161,7 @@ def generate_quiz(concept: str, level: str, quiz_type: str,
 
 
 def main():
+    """CLI entry point: parse args and generate quiz template as JSON."""
     parser = argparse.ArgumentParser(
         description="根据教学内容和用户等级生成练习题模板"
     )

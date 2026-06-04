@@ -18,10 +18,8 @@ import argparse
 import json
 import os
 import re
-import sys
 import urllib.request
 import urllib.error
-from datetime import datetime
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SUBJECTS_DIR = os.path.join(SCRIPT_DIR, "..", "subjects")
@@ -59,7 +57,7 @@ def fetch_skill(path_or_url):
             req = urllib.request.Request(url, headers={"User-Agent": "teacher-skill/2.1"})
             with urllib.request.urlopen(req, timeout=15) as resp:
                 return resp.read().decode("utf-8")
-        except Exception as e:
+        except urllib.error.URLError as e:
             return json.dumps({"error": f"获取失败: {str(e)}", "url": url})
 
     else:
@@ -124,8 +122,9 @@ def extract_mental_models(body):
 
         # 收集描述（紧跟模型标题后的非空行）
         if current.get("name") and not current.get("description_started"):
-            if line.strip() and not line.startswith("#") and not line.startswith("---"):
-                current["description"] = (current.get("description", "") + " " + line.strip()).strip()
+            if line.strip() and not any(line.startswith(p) for p in ("#", "---")):
+                desc_parts = [current.get("description", ""), line.strip()]
+                current["description"] = (" ".join(p for p in desc_parts if p)).strip()
             elif line.strip() == "" and current.get("description"):
                 current["description_started"] = True
 
@@ -217,32 +216,14 @@ def print_analysis(analysis):
     print("\n".join(lines))
 
 
-def generate_skel(analysis, output_name=None):
-    """生成教学学科文件骨架。"""
-    if "error" in analysis:
-        print(json.dumps({"error": "无法生成：源文件获取失败", "detail": analysis.get("error")},
-                         ensure_ascii=False))
-        return
-
-    name = output_name or analysis["name"].replace(" ", "-").lower()
-
-    triggers = [analysis["name"]]
-    if analysis["type"] == "thinking":
-        triggers.append("思维框架")
-    if analysis["has_roleplay"]:
-        triggers.append("角色扮演")
-
-    desc = f"反蒸馏课程：教会人类{analysis['name']}的思维方式。"
-    if analysis["mental_models"]:
-        model_names = "、".join([m["name"][:20] for m in analysis["mental_models"][:5]])
-        desc += f" 包含 {len(analysis['mental_models'])} 个核心模型：{model_names}。"
-
+def _build_skel_output(analysis, name, desc, triggers):
+    """构建骨架文件的文本行列表。"""
     output = []
     output.append("---")
-    output.append(f"name: {name}")
-    output.append(f"description: >")
-    output.append(f"  {desc}")
-    output.append(f"  ")
+    output.append("name: " + name)
+    output.append("description: >")
+    output.append("  " + desc)
+    output.append("  ")
     output.append(f"  基于 {analysis['name']} 的 AI Skill 蒸馏分析反蒸馏为人类教学课程。")
     output.append(f" 源文件：{analysis.get('source_url', '未知')}")
     output.append("triggers:")
@@ -288,9 +269,33 @@ def generate_skel(analysis, output_name=None):
     return "\n".join(output)
 
 
+def generate_skel(analysis, output_name=None):
+    """生成教学学科文件骨架。"""
+    if "error" in analysis:
+        print(json.dumps({"error": "无法生成：源文件获取失败", "detail": analysis.get("error")},
+                         ensure_ascii=False))
+        return None
+
+    name = output_name or analysis["name"].replace(" ", "-").lower()
+
+    triggers = [analysis["name"]]
+    if analysis["type"] == "thinking":
+        triggers.append("思维框架")
+    if analysis["has_roleplay"]:
+        triggers.append("角色扮演")
+
+    desc = f"反蒸馏课程：教会人类{analysis['name']}的思维方式。"
+    if analysis["mental_models"]:
+        model_names = "、".join([m["name"][:20] for m in analysis["mental_models"][:5]])
+        desc += f" 包含 {len(analysis['mental_models'])} 个核心模型：{model_names}。"
+
+    return _build_skel_output(analysis, name, desc, triggers)
+
+
 # ==================== 主入口 ====================
 
 def main():
+    """CLI entry point: parse args and execute analyze/generate workflow."""
     parser = argparse.ArgumentParser(description="teacher-skill 反蒸馏工具")
     parser.add_argument("--analyze", metavar="URL_or_PATH",
                         help="分析一个 skill（URL 或本地路径）")

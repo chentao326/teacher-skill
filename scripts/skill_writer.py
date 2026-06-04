@@ -425,7 +425,8 @@ def create_teacher_profile(slug, name, subject, strategy_content=None, style_con
         _write_file(os.path.join(teacher_dir, "SKILL.md"), skill_content)
         _write_file(os.path.join(teacher_dir, "teaching-strategy.md"), strategy_content)
         _write_file(os.path.join(teacher_dir, "teaching-style.md"), style_content)
-        _write_file(os.path.join(teacher_dir, "meta.json"), json.dumps(meta, ensure_ascii=False, indent=2))
+        meta_json = json.dumps(meta, ensure_ascii=False, indent=2)
+        _write_file(os.path.join(teacher_dir, "meta.json"), meta_json)
 
         # 创建 versions 目录
         versions_dir = os.path.join(teacher_dir, "versions")
@@ -450,6 +451,7 @@ def create_teacher_profile(slug, name, subject, strategy_content=None, style_con
 
 
 def update_teacher_profile(slug, strategy_content=None, style_content=None):
+    # pylint: disable=too-many-locals
     """
     更新现有教学档案。
 
@@ -653,7 +655,7 @@ def list_teachers():
 # CLI
 # ---------------------------------------------------------------------------
 
-def cmd_list(args):
+def cmd_list(_args):
     """处理 list 子命令。"""
     result = list_teachers()
     print(json.dumps(result, ensure_ascii=False, indent=2))

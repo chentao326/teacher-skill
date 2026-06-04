@@ -40,6 +40,8 @@ extract_subtitle.py - 从视频链接或本地文件中提取字幕/文字稿
   --format    输出格式：txt（纯文本，默认）或 json（带元数据）
 """
 
+from __future__ import annotations
+
 import argparse
 import json
 import os
@@ -58,6 +60,62 @@ def check_dependencies():
         return True
     except (FileNotFoundError, subprocess.CalledProcessError):
         return False
+
+
+def _try_extract_subtitle(url: str, try_lang: str) -> dict | None:
+    """尝试用指定语言提取字幕，成功返回结果dict，失败返回None。"""
+    try:
+        cmd = [
+            "yt-dlp",
+            "--write-auto-sub",
+            "--sub-lang", try_lang if try_lang else "en",
+            "--skip-download",
+            "--sub-format", "vtt",
+            "--convert-subs", "srt",
+            "-o", "%(title)s.%(ext)s",
+            url,
+        ]
+
+        result = subprocess.run(
+            cmd,
+            capture_output=True, text=True, timeout=120,
+            cwd="/tmp/teacher-skills-subs",
+            check=False,
+        )
+
+        if result.returncode == 0:
+            text = _read_subtitle_file()
+            if text and len(text.strip()) > 50:
+                return {
+                    "success": True,
+                    "text": text,
+                    "lang": try_lang or "auto",
+                    "source": url,
+                    "error": None,
+                }
+    except subprocess.TimeoutExpired:
+        return None
+    except OSError:
+        return None
+    return None
+
+
+def _read_subtitle_file() -> str | None:
+    """读取临时目录中的字幕文件，返回清洗后的文本，没有则返回None。"""
+    for f in os.listdir("/tmp/teacher-skills-subs"):
+        if f.endswith(".srt") or f.endswith(".vtt"):
+            filepath = os.path.join("/tmp/teacher-skills-subs", f)
+            try:
+                with open(filepath, "r", encoding="utf-8") as fh:
+                    raw_content = fh.read()
+                text = clean_subtitle(raw_content)
+                return text
+            finally:
+                try:
+                    os.remove(filepath)
+                except OSError:
+                    pass
+    return None
 
 
 def extract_subtitle_from_url(url: str, lang: str = "zh") -> dict:
@@ -79,45 +137,9 @@ def extract_subtitle_from_url(url: str, lang: str = "zh") -> dict:
     lang_list = [lang, "zh", "zh-Hans", "zh-CN", "en", "en-US", ""]
 
     for try_lang in lang_list:
-        try:
-            cmd = [
-                "yt-dlp",
-                "--write-auto-sub",
-                "--sub-lang", try_lang if try_lang else "en",
-                "--skip-download",
-                "--sub-format", "vtt",
-                "--convert-subs", "srt",
-                "-o", "%(title)s.%(ext)s",
-                url,
-            ]
-
-            result = subprocess.run(
-                cmd,
-                capture_output=True, text=True, timeout=120,
-                cwd="/tmp/teacher-skills-subs"
-            )
-
-            if result.returncode == 0:
-                # 查找下载的字幕文件
-                for f in os.listdir("/tmp/teacher-skills-subs"):
-                    if f.endswith(".srt") or f.endswith(".vtt"):
-                        filepath = os.path.join("/tmp/teacher-skills-subs", f)
-                        with open(filepath, "r", encoding="utf-8") as fh:
-                            raw_content = fh.read()
-                        text = clean_subtitle(raw_content)
-                        os.remove(filepath)
-                        if len(text.strip()) > 50:  # 至少有一些内容
-                            return {
-                                "success": True,
-                                "text": text,
-                                "lang": try_lang or "auto",
-                                "source": url,
-                                "error": None,
-                            }
-        except subprocess.TimeoutExpired:
-            continue
-        except Exception as e:
-            continue
+        result = _try_extract_subtitle(url, try_lang)
+        if result is not None:
+            return result
 
     return {
         "success": False,
@@ -212,17 +234,18 @@ def read_local_file(filepath: str) -> dict:
             "source": filepath,
             "error": None,
         }
-    except Exception as e:
+    except OSError as e:
         return {
             "success": False,
             "text": "",
             "lang": "",
             "source": filepath,
-            "error": str(e),
+            "error": f"读取文件失败: {e}",
         }
 
 
 def main():
+    """CLI entry point: parse args and output extracted subtitle text."""
     parser = argparse.ArgumentParser(
         description="从视频链接或本地文件中提取字幕/文字稿"
     )

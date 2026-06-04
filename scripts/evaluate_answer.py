@@ -112,6 +112,7 @@ def evaluate_answer(answer: str, expected: str, level: str,
 
 
 def main():
+    """CLI entry point: parse args and output evaluation result as JSON."""
     parser = argparse.ArgumentParser(
         description="评估用户答案并生成反馈模板"
     )

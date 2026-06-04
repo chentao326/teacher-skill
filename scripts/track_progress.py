@@ -135,7 +135,15 @@ def get_status(filepath: str) -> dict:
     # 生成进度报告
     units_summary = []
     for u in session["units"]:
-        status_icon = "✅" if u.get("score", 0) >= 80 else ("⚠️" if u.get("score", 0) >= 50 else "❌") if u.get("score") is not None else "📝"
+        score = u.get("score")
+        if score is None:
+            status_icon = "📝"
+        elif score >= 80:
+            status_icon = "✅"
+        elif score >= 50:
+            status_icon = "⚠️"
+        else:
+            status_icon = "❌"
         units_summary.append(
             f"  {status_icon} 单元{u['unit']}: {u['concept']}"
             + (f" (得分: {u['score']})" if u.get("score") is not None else "")
@@ -186,6 +194,7 @@ def update_level(level: str, filepath: str) -> dict:
 
 
 def main():
+    """CLI entry point: parse args and execute the requested progress action."""
     parser = argparse.ArgumentParser(description="追踪学习进度")
     parser.add_argument("--init", action="store_true", help="初始化学习会话")
     parser.add_argument("--topic", help="学习主题")
