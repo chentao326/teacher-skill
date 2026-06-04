@@ -25,6 +25,7 @@ version: 2.1.0
 | `/list-teachers` | 列出所有已创建的教学档案 | `/list-teachers` |
 | `/teacher rollback {v}` | 回滚到指定版本 | `/teacher rollback v3` |
 | `/teacher progress` | 查看学习状态详情（含各单元理解检查结果）v2.1 | `/teacher progress` |
+| **`/teacher correct`** | **进入错误纠正模式——当 AI 讲错了/偏了时使用（v2.7）** | **`/teacher correct`** |
 
 ## 使用说明
 
