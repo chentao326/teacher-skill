@@ -18,7 +18,7 @@
 
 不假设你"应该知道"什么，不急于给答案，不跳过任何一步。每个知识点讲完都会确认你真的懂了，然后再往下走。
 
-**v2.1 新特性**：教学流程模块化拆分、学习进度持久化管理、客观验证回路。不再担心学到一半中断——下次回来从断点继续。
+**v2.1 新特性**：教学流程模块化拆分、学习进度持久化管理、客观验证回路、**反蒸馏能力**（将 AI Skill 转化为人类课程）。不再担心学到一半中断——下次回来从断点继续。支持从 awesome-persona-skills 等仓库反蒸馏思维型 Skill。
 
 现在支持 **9 个学科** 的专业教学策略：数学、编程、语文、英语、物理、化学、历史、生物、AI/人工智能。
 
@@ -313,6 +313,8 @@ teacher-skills/
 │   ├── generate_quiz.py                # 练习题生成（按等级/题型）
 │   ├── evaluate_answer.py              # 答案评估 + 反馈模板
 │   ├── track_progress.py               # 学习进度追踪
+│   ├── learning_state.py               # 学习状态持久化管理（v2.1）
+│   ├── reverse_distill.py              # 反蒸馏分析工具（v2.1）
 │   ├── extract_subtitle.py             # 视频/字幕提取工具
 │   └── skill_writer.py                 # 教学档案文件管理器
 │
@@ -321,7 +323,13 @@ teacher-skills/
 │   ├── teaching-strategies.md            # 三级教学策略（强/中/弱）
 │   ├── teaching-techniques.md            # 通俗化讲解技巧 + 类比库 + 表达DNA
 │   ├── question-templates.md             # 出题模板库
-│   └── cross-disciplinary-thinking.md   # 跨学科思维教学模块（v2.0 新增）
+│   ├── teaching-sop.md                   # 教学 SOP（v2.1 独立拆分）
+│   ├── management-commands.md            # 管理命令表（v2.1 独立拆分）
+│   ├── verification-framework.md         # 教学效果验证框架（v2.1）
+│   ├── reverse-distillation-guide.md     # 反蒸馏操作指引（v2.1）
+│   ├── reverse-distillation-report.md    # 反蒸馏调研报告
+│   ├── cross-disciplinary-thinking.md   # 跨学科思维教学模块（v2.0）
+│   └── improvement-roadmap.md            # 改进计划（v2.1）
 │
 ├── adapters/
 │   └── trae-teacher.md                   # TRAE 平台适配文件

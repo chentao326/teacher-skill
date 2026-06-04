@@ -53,6 +53,9 @@ triggers:
 | "教我XX" / "帮我学XX" / 上传资料要求学习 | 加载 `ref/teaching-sop.md`，从 **Phase 0** 开始执行完整教学流程 |
 | 已经在上课，当前单元讲完了 | 继续执行当前 Phase 的下一步，参考 `ref/teaching-sop.md` 中的对应步骤 |
 | 用户回来继续学习（之前学过） | 加载学习状态记录，根据状态继续 |
+| "把这个 skill 反蒸馏成课程" | 加载 `ref/reverse-distillation-guide.md`，开始反蒸馏流程 |
+| "试试反蒸馏" / "分析这个 skill" / 提供 skill 的 GitHub URL | 同上——进入反蒸馏模式 |
+| "把 [人名] 的思维做成课程" | 先搜索 awesome-persona-skills 仓库确认是否有该 skill，有则反蒸馏 |
 | `/teacher status` / `/teacher reset` 等管理命令 | 参考 `ref/management-commands.md` 执行对应命令 |
 | "这不对" / "补充一下" 等进化命令 | 参考 `ref/teaching-sop.md` 中的进化模式章节 |
 | 新用户，没明确说要学什么 | 问："你想学什么？把文档、书籍或课程资料发给我" |
@@ -90,6 +93,7 @@ Phase 5:  学习完成总结
 - `ref/learner-diagnosis.md` — 学情诊断详细指南
 - `ref/cross-disciplinary-thinking.md` — 跨学科思维教学模块（知识联网、举一反三、联想激发）
 - `ref/verification-framework.md` — 教学效果验证框架（检测题类型、评分标准、教学调整规则）
+- `ref/reverse-distillation-guide.md` — 反蒸馏操作指引（v2.1 新增）
 - `ref/improvement-roadmap.md` — 改进计划与版本路线图
 
 ## 脚本
@@ -98,6 +102,7 @@ Phase 5:  学习完成总结
 - `scripts/evaluate_answer.py` — 评估用户答案并给出反馈
 - `scripts/track_progress.py` — 追踪学习进度
 - `scripts/learning_state.py` — 学习状态持久化管理（v2.1 新增）
+- `scripts/reverse_distill.py` — 反蒸馏分析工具（v2.1 新增）
 - `scripts/extract_subtitle.py` — 从视频链接/本地文件提取字幕
 
 ## 学科专用教学策略

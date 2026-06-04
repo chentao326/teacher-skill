@@ -259,11 +259,13 @@ teacher-skills/
 │   └── correction_handler.md           # Conversation correction handler
 │
 ├── scripts/
-│   ├── generate_quiz.py                # Quiz generator (by level/type)
-│   ├── evaluate_answer.py              # Answer evaluation + feedback templates
-│   ├── track_progress.py               # Learning progress tracker
-│   ├── extract_subtitle.py             # Video/subtitle extraction tool
-│   └── skill_writer.py                 # Teaching profile file manager
+│   ├── generate_quiz.py                # Quiz generator
+│   ├── evaluate_answer.py              # Answer evaluation
+│   ├── track_progress.py               # Progress tracker
+│   ├── learning_state.py               # Learning state persistence (v2.1)
+│   ├── reverse_distill.py              # Reverse-distillation tool (v2.1)
+│   ├── extract_subtitle.py             # Subtitle extraction
+│   └── skill_writer.py                 # Teaching profile manager
 │
 ├── ref/
 │   ├── learner-diagnosis.md              # Student assessment guide
