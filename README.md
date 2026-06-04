@@ -6,8 +6,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![AgentSkills](https://img.shields.io/badge/AgentSkills-Standard-green)](https://agentskills.io)
-[![Version](https://img.shields.io/badge/version-2.2.0-blue)]()
-[![Subjects](https://img.shields.io/badge/subjects-9-orange)]()
+[![Version](https://img.shields.io/badge/version-2.6.0-blue)]()
+[![Subjects](https://img.shields.io/badge/subjects-10-orange)]()
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
 [![Multi-Platform](https://img.shields.io/badge/Multi--Platform-5%20Platforms-orange)]()
 [![Readme EN](https://img.shields.io/badge/Readme-English-blue)](README_EN.md)
@@ -18,9 +18,9 @@
 
 不假设你"应该知道"什么，不急于给答案，不跳过任何一步。每个知识点讲完都会确认你真的懂了，然后再往下走。
 
-**v2.2 新特性**：说"我想学会XXX的思维方式"自动搜索 skill、生成课程、开始教学——不再需要知道任何技术细节。
+**v2.6 核心能力**：说"我想学会XXX的思维方式"自动从开源 skill 仓库/网络搜索获取资料，统一提取思维模型，生成课程并开始教学。支持学习进度持久化、刻意练习循环、艾宾浩斯间隔复习。
 
-现在支持 **9 个学科** 的专业教学策略：数学、编程、语文、英语、物理、化学、历史、生物、AI/人工智能。
+现在支持 **10 个学科** 的专业教学策略：数学、编程、语文、英语、物理、化学、历史、生物、AI、费曼思维。说"我想学会巴菲特的思维方式"会自动搜索匹配 skill 并生成课程。
 
 ---
 
@@ -272,7 +272,7 @@ AI 会自动分析该教师的教学风格（句式、词汇、节奏、互动�
 
 > **依赖**：视频字幕提取需要 `yt-dlp`（`pip install yt-dlp`）。如果视频没有字幕，请上传课程字幕文件。
 
-### 跨学科思维（v2.0 新增）
+### 跨学科思维（v2.0）
 
 不再孤立地教单个学科——在教学全流程中嵌入网状知识连接，帮助学生建立跨学科联想习惯。
 
@@ -285,6 +285,42 @@ AI 会自动分析该教师的教学风格（句式、词汇、节奏、互动�
 跨学科连接不是额外负担——好的跨学科教学让每个概念都"多了一个维度"。当你学数学时看到物理的影子，学物理时闻到化学的味道，知识就活了。
 
 详见 `ref/cross-disciplinary-thinking.md`。
+
+### 技能教学（v2.2）
+
+说"我想学会XXX的思维方式"自动完成搜索、生成、教学全流程：
+
+1. 搜索开源 skill 仓库（awesome-persona-skills 等）查找匹配 skill
+2. 搜索不到时自动网络搜索补充公开信息
+3. 统一提取管道：用户资料 + skill + 网络信息 → 四维提取（核心观点/实际应用/多视角/案例库）→ 三重验证 → 课程组装
+4. 每条核心观点标注来源链接
+
+说"我想学会巴菲特的思维方式" → 搜索巴菲特.skill → 分析提取 6 个心智模型 → 生成课程 → 直接开课。
+
+> 用户提供自己的资料时，以资料为主，skill 为辅助。
+
+### 刻意练习循环（v2.5）
+
+基于 Ericsson 刻意练习方法论，单次理解检查升级为刻意练习循环：
+
+```
+初次检查 → 不通过 → 诊断（概念偏差/表达不准/迁移失败/记忆混淆）→ 纠正 → 重试
+    ↓ 通过
+变式练习（换不同场景）→ 不通过 → 诊断 → 纠正 → 重试
+    ↓ 通过
+确认掌握 → 进入下一单元（最多 3 次循环，超限降级）
+```
+
+讲解后先做"心智演练"（在脑子里过一遍），再答题，再变式。不是"做对了就过"，是"换场景还能做对"才算掌握。
+
+### 间隔复习系统（v2.6）
+
+基于 Ebbinghaus 遗忘曲线，学习进度持久化后自动安排间隔复习：
+
+- 每次回来学习时，自动检查是否有到期的复习项
+- 快速回顾模式（2-3 分钟），非重新教学
+- 复习间隔递增：1 天 → 3 天 → 7 天 → 14 天 → 30 天 → 已巩固
+- 用户可以选择"先复习"、"先学新的"或"跳过这次"
 
 ---
 
@@ -323,12 +359,18 @@ teacher-skills/
 │   ├── teaching-strategies.md            # 三级教学策略（强/中/弱）
 │   ├── teaching-techniques.md            # 通俗化讲解技巧 + 类比库 + 表达DNA
 │   ├── question-templates.md             # 出题模板库
-│   ├── teaching-sop.md                   # 教学 SOP（v2.1 独立拆分）
-│   ├── management-commands.md            # 管理命令表（v2.1 独立拆分）
-│   ├── verification-framework.md         # 教学效果验证框架（v2.1）
-│   ├── skill-to-curriculum-guide.md      # 技能教学操作指引（v2.2）
-│   ├── cross-disciplinary-thinking.md   # 跨学科思维教学模块（v2.0）
-│   └── improvement-roadmap.md            # 改进计划（v2.1）
+│   ├── teaching-sop.md                   # 教学 SOP（主流程 Phase 0-5）
+│   ├── management-commands.md            # 管理命令表
+│   ├── verification-framework.md         # 教学效果验证框架
+│   ├── extraction-framework.md           # 统一提取框架（四维提取+三重验证）
+│   ├── skill-to-curriculum-guide.md      # 技能教学操作指引
+│   ├── cross-disciplinary-thinking.md   # 跨学科思维教学模块
+│   ├── deliberate-practice-research.md   # 刻意练习调研报告
+│   ├── forgetting-curve-research.md      # 遗忘曲线调研报告
+│   ├── nuwa-absorption.md               # 女娲.skill 吸收分析
+│   ├── reverse-distillation-report.md   # 技能教学调研报告
+│   ├── unified-extraction-research.md    # 统一提取管道调研
+│   └── improvement-roadmap.md            # 改进计划
 │
 ├── adapters/
 │   └── trae-teacher.md                   # TRAE 平台适配文件
