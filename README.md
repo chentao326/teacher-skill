@@ -1,3 +1,5 @@
+
+
 # 老师.skill
 
 > 好老师不是告诉你答案的人，是帮你找到答案的人。
@@ -84,7 +86,7 @@ cp teacher-skills/SKILL.md .trae/rules/teacher.md
 
 ```yaml
 ---
-description: "AI老师：给定资料后像老师一样教会用户理解内容，支持学情诊断和分级教学"
+description: "AI老师：给定资料后像老师一样教会用户理解内容，支持学情诊断和分级教学。当用户说'教我'、'帮我学'、'帮我理解'或上传资料要求学习时触发。"
 alwaysApply: false
 priority: 2
 ---
